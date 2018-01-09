@@ -41,6 +41,7 @@ const config = {
     devServer: {
         inline: true,
         hot: true,
+        historyApiFallback: true,
         open: true,
         contentBase: path.join(__dirname, "dist"),
     },

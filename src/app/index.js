@@ -1,23 +1,21 @@
-import React from "react";
-import ReactDOM from 'react-dom'
+import React, {Component}  from "react";
+import {render} from 'react-dom'
 import {hot} from 'react-hot-loader'
 import AppComponent from './components/app.component'
 import 'semantic-ui-css/semantic.css'
+import {BrowserRouter} from "react-router-dom"
 
-const render = Component => {
-    ReactDOM.render(
-            <Component/>,
-            document.getElementById('root')
-    )
-};
 
-render(AppComponent);
+class Root extends Component{
+    render(){
+        return (
+            <BrowserRouter >
+                <AppComponent/>
+            </BrowserRouter>
+        )
+    }
+}
 
-hot(module)(render);
+render(<Root/>, document.getElementById('root'));
 
-// if (module.hot) {
-//     module.hot.accept('./components/app.component', () => {
-//         const NextRootContainer = require('./components/app.component').default;
-//         render(NextRootContainer);
-//     })
-// }
+hot(module)(Root);

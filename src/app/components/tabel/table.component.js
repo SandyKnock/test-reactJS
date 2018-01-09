@@ -3,8 +3,6 @@ import TableCsv from "./csv.csv"
 import {Table} from "semantic-ui-react"
 import "./table.sass"
 
-const table = require('./test.html');
-
 const data = TableCsv;
 
 console.log(data);
