@@ -1,23 +1,30 @@
-import React from "react";
-import ReactDOM from 'react-dom'
+import React, {Component} from "react";
+import {render} from 'react-dom'
 import {hot} from 'react-hot-loader'
 import AppComponent from './components/app.component'
 import 'semantic-ui-css/semantic.css'
+import {BrowserRouter} from "react-router-dom"
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
 
-const render = Component => {
-    ReactDOM.render(
-            <Component/>,
-            document.getElementById('root')
-    )
-};
+function test(state = [], action) {
+    return state
+}
 
-render(AppComponent);
+const store = createStore(test);
 
-hot(module)(render);
+class Root extends Component {
+    render() {
+        return (
+            <Provider store={store}>
+                <BrowserRouter>
+                    <AppComponent/>
+                </BrowserRouter>
+            </Provider>
+        )
+    }
+}
 
-// if (module.hot) {
-//     module.hot.accept('./components/app.component', () => {
-//         const NextRootContainer = require('./components/app.component').default;
-//         render(NextRootContainer);
-//     })
-// }
+render(<Root/>, document.getElementById('root'));
+
+hot(module)(Root);
