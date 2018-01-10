@@ -1,17 +1,26 @@
-import React, {Component}  from "react";
+import React, {Component} from "react";
 import {render} from 'react-dom'
 import {hot} from 'react-hot-loader'
 import AppComponent from './components/app.component'
 import 'semantic-ui-css/semantic.css'
 import {BrowserRouter} from "react-router-dom"
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
 
+function test(state = [], action) {
+    return state
+}
 
-class Root extends Component{
-    render(){
+const store = createStore(test);
+
+class Root extends Component {
+    render() {
         return (
-            <BrowserRouter >
-                <AppComponent/>
-            </BrowserRouter>
+            <Provider store={store}>
+                <BrowserRouter>
+                    <AppComponent/>
+                </BrowserRouter>
+            </Provider>
         )
     }
 }

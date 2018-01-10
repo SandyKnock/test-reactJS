@@ -26,7 +26,7 @@ export default class MenuComponent extends Component {
                  content={this.props.titleArray[i]}
                  onClick={this.handleItemClick}
                  as={NavLink}
-                 to="/test"
+                 to={'/'+this.props.titleArray[i]}
              />
          )
         }

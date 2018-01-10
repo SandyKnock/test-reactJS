@@ -2,8 +2,9 @@ import React, {Component} from "react";
 import HeaderComponent from "./header/header.component"
 import TableComponent from "./tabel/table.component"
 import {Container, Grid} from "semantic-ui-react"
-import MenuComponent from "./menu/menu.component";
 import {Route} from "react-router-dom"
+import CanvasComponent from "./canvas/canvas.component";
+import {connect} from 'react-redux'
 
 export default class AppComponent extends Component {
     a = 2;
@@ -15,12 +16,12 @@ export default class AppComponent extends Component {
         }
     }
 
-    hello() {
-        this.setState(prevState => ({
-            a: prevState.a + 2
-        }));
-        console.log(this.a);
-    }
+    // hello() {
+    //     this.setState(prevState => ({
+    //         a: prevState.a + 2
+    //     }));
+    //     console.log(this.a);
+    // }
 
     render() {
         return (
@@ -29,11 +30,8 @@ export default class AppComponent extends Component {
                     <Grid.Column>
                         <HeaderComponent></HeaderComponent>
                         <article>
-                            <Route path="/" exact component={TableComponent} />
-                            {/*<button className="ui primary button" onClick={() => this.hello()}></button>*/}
-                            {/*<div className="">{this.state.a}</div>*/}
-                            {/*<TableComponent></TableComponent>*/}
-                            <Route path="/test" component={HeaderComponent} />
+                            <Route path="/page1" exact component={TableComponent} />
+                            <Route path="/page2" component={CanvasComponent} />
                         </article>
                     </Grid.Column>
                 </Grid>
@@ -41,3 +39,8 @@ export default class AppComponent extends Component {
         )
     }
 }
+
+// export default connect(
+//     state => ({}),
+//     dispatch => ({})
+// )
